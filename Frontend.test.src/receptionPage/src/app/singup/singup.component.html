@@ -1,8 +1,19 @@
-<h1></h1>
+<h1>Signup</h1>
 <h2>What kind of user are you?</h2>
-<mat-radio-group>
-    <mat-radio-button>hotel guest</mat-radio-button>
-    <mat-radio-button>a travel agency</mat-radio-button>
-    <mat-radio-button>a company</mat-radio-button>
-</mat-radio-group>
-<small>Enjoy a 10% discount on your reservation just for sign up</small>
+<mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle  value="1">hotel guest</mat-button-toggle >
+    <mat-button-toggle  value="2">a travel agency</mat-button-toggle >
+    <mat-button-toggle  value="3">a company</mat-button-toggle >
+</mat-button-toggle-group>
+<div [ngSwitch]="group.value">
+    <div *ngSwitchCase="1">
+        <app-hotel-guest-form ></app-hotel-guest-form>
+    </div>
+    <div *ngSwitchCase="2">
+        <app-travel-agency-form ></app-travel-agency-form>
+    </div>
+    <div *ngSwitchCase="3">
+        <app-company-form ></app-company-form>
+    </div>
+</div>
+<p>Enjoy a 10% discount on your reservation just for sign up</p>
